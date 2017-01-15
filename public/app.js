@@ -54,7 +54,7 @@ team.addChaser(playerList[2]);
 team.addChaser(playerList[3]);
 team.addChaser(playerList[4]);
 
-console.log(playerList[2].tag(playerList[0]));
+console.log(playerList[3].tag(playerList[4]));
 
 },{"./player":2,"./team":3}],2:[function(require,module,exports){
 module.exports = function Player(name) {
@@ -63,7 +63,9 @@ module.exports = function Player(name) {
     this.team = null;
 
     this.tag = function (player) {
+        if (player.team === 'Runners') {
         return player.isFrozen = true
+        } 
     };
 }
 },{}],3:[function(require,module,exports){

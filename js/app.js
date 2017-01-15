@@ -53,4 +53,4 @@ team.addChaser(playerList[2]);
 team.addChaser(playerList[3]);
 team.addChaser(playerList[4]);
 
-console.log(playerList[2].tag(playerList[0]));
+console.log(playerList[3].tag(playerList[4]));
