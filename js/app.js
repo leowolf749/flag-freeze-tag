@@ -28,3 +28,29 @@
  *      - if the player is a chaser nothing happens
  *      - if the player is a runner, the runners win the game
  */
+
+let Player = require('./player');
+let Team = require('./team');
+
+window.addEventListener('load', function () {
+    console.log('ready');
+});
+
+let playerList = [
+    new Player('Ed'),
+    new Player('Greg'),
+    new Player('Gred'),
+    new Player('Dreg'),
+    new Player('Gerg'),
+];
+// console.log(playerList);
+
+let team = new Team;
+
+team.addRunner(playerList[0]);
+team.addRunner(playerList[1]);
+team.addChaser(playerList[2]);
+team.addChaser(playerList[3]);
+team.addChaser(playerList[4]);
+
+console.log(playerList[2].tag(playerList[0]));
