@@ -46,6 +46,9 @@ let playerList = [
 ];
 // console.log(playerList);
 
+/* Lines 49-55 are where I am adding players from the playerList array to the two teams,
+    Runners and Chasers. */
+
 let team = new Team;
 
 team.addRunner(playerList[0]);
@@ -54,7 +57,11 @@ team.addChaser(playerList[2]);
 team.addChaser(playerList[3]);
 team.addChaser(playerList[4]);
 
-console.log(playerList[3].tag(playerList[4]));
+/* Logging gameplay */
+
+console.log(playerList[4].tag(playerList[0]));
+console.log(playerList[4].tag(playerList[1]));
+console.log(playerList[0].tag(playerList[1]));
 
 },{"./player":2,"./team":3}],2:[function(require,module,exports){
 module.exports = function Player(name) {
@@ -63,9 +70,21 @@ module.exports = function Player(name) {
     this.team = null;
 
     this.tag = function (player) {
-        if (player.team === 'Runners') {
-        return player.isFrozen = true
-        } 
+        if (this.team === 'Runners' && this.isFrozen === true) {
+            return 'Frozen players cannot unfreeze other players.'
+        }
+        if (this.team === 'Chasers' && player.team === 'Chasers') {
+            return 'Nothing happened.'
+        }
+        if (this.team === 'Runners' && player.isFrozen === true && player.team === 'Runners') {
+            player.isFrozen = false;
+            return player.name + ' was unfrozen by ' + this.name;
+        } else {
+            if (this.team === 'Chasers' && player.team === 'Runners') {
+                player.isFrozen = true;
+                return player.name + ' was frozen by ' + this.name;
+            }  
+        }
     };
 }
 },{}],3:[function(require,module,exports){

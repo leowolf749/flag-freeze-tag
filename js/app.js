@@ -45,6 +45,9 @@ let playerList = [
 ];
 // console.log(playerList);
 
+/* Lines 49-55 are where I am adding players from the playerList array to the two teams,
+    Runners and Chasers. */
+
 let team = new Team;
 
 team.addRunner(playerList[0]);
@@ -53,4 +56,8 @@ team.addChaser(playerList[2]);
 team.addChaser(playerList[3]);
 team.addChaser(playerList[4]);
 
-console.log(playerList[3].tag(playerList[4]));
+/* Logging gameplay */
+
+console.log(playerList[4].tag(playerList[0]));
+console.log(playerList[4].tag(playerList[1]));
+console.log(playerList[0].tag(playerList[1]));
