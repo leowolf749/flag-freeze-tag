@@ -1,7 +1,7 @@
 module.exports = function Player(name) {
     this.name = name;
-    this.isFrozen = false;
     this.team = null;
+    this.isFrozen = false;
 
     this.tag = function (player) {
         if (this.team === 'Runners' && this.isFrozen === true) {
@@ -19,5 +19,6 @@ module.exports = function Player(name) {
                 return player.name + ' was frozen by ' + this.name;
             }  
         }
-    };
+    }
+
 }

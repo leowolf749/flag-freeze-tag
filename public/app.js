@@ -37,37 +37,39 @@ window.addEventListener('load', function () {
     console.log('ready');
 });
 
-let playerList = [
-    new Player('Ed'),
-    new Player('Greg'),
-    new Player('Gred'),
-    new Player('Dreg'),
-    new Player('Gerg'),
-];
-// console.log(playerList);
 
-/* Lines 49-55 are where I am adding players from the playerList array to the two teams,
+let a = new Player('Ed');
+let b = new Player('Greg');
+let c = new Player('Gred');
+let d = new Player('Dreg');
+let e = new Player('Gerg');
+
+/*  Adding players to the two teams,
     Runners and Chasers. */
 
-let team = new Team;
+let run = new Team('Runners');
+let chase = new Team('Chasers');
 
-team.addRunner(playerList[0]);
-team.addRunner(playerList[1]);
-team.addChaser(playerList[2]);
-team.addChaser(playerList[3]);
-team.addChaser(playerList[4]);
+run.addRunner(a);
+run.addRunner(b);
+chase.addChaser(c);
+chase.addChaser(d);
+chase.addChaser(e);
 
 /* Logging gameplay */
 
-console.log(playerList[4].tag(playerList[0]));
-console.log(playerList[4].tag(playerList[1]));
-console.log(playerList[0].tag(playerList[1]));
+console.log(e.tag(a));
+console.log(e.tag(b));
+console.log(a.tag(b));
+
+
+
 
 },{"./player":2,"./team":3}],2:[function(require,module,exports){
 module.exports = function Player(name) {
     this.name = name;
-    this.isFrozen = false;
     this.team = null;
+    this.isFrozen = false;
 
     this.tag = function (player) {
         if (this.team === 'Runners' && this.isFrozen === true) {
@@ -85,22 +87,22 @@ module.exports = function Player(name) {
                 return player.name + ' was frozen by ' + this.name;
             }  
         }
-    };
+    }
+
 }
 },{}],3:[function(require,module,exports){
-module.exports = function Team(team) {
-let runners = [];
-let chasers = [];
-
-
+module.exports = 
+function Team(team) {
+    let runners = [];
+    let chasers = [];
     let players = {
         addRunner: function (name) {
             runners.push(name);
-            return name.team = 'Runners';  
+            return name.team = 'Runners'  
         },
         addChaser: function (name) {
             chasers.push(name);
-            return name.team = 'Chasers';
+            return name.team = 'Chasers'
         },
         announce: function () {
             for (let i = 0; i < runners.length; i++) {
@@ -115,7 +117,9 @@ let chasers = [];
     console.log(runners);
     console.log(chasers);
     return players;
+
 };
+
 
 
 },{}]},{},[1]);

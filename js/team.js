@@ -1,16 +1,15 @@
-module.exports = function Team(team) {
-let runners = [];
-let chasers = [];
-
-
+module.exports = 
+function Team(team) {
+    let runners = [];
+    let chasers = [];
     let players = {
         addRunner: function (name) {
             runners.push(name);
-            return name.team = 'Runners';  
+            return name.team = 'Runners'  
         },
         addChaser: function (name) {
             chasers.push(name);
-            return name.team = 'Chasers';
+            return name.team = 'Chasers'
         },
         announce: function () {
             for (let i = 0; i < runners.length; i++) {
@@ -25,5 +24,7 @@ let chasers = [];
     console.log(runners);
     console.log(chasers);
     return players;
+
 };
+
 
