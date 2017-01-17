@@ -65,6 +65,8 @@ window.addEventListener('load', function () {
     r.team[3].tag(r.team[0]);
     c.team[2].tag(r.team[1]);
 
+    r.team[0].getFlag();
+
     c.won(r);
     r.won(c);
 
@@ -85,7 +87,15 @@ module.exports = function Player(name) {
         if (this.team === 'chasers' && player.team === 'runners') {
             console.log(player.name + ' was frozen by ' + this.name);
             player.isFrozen = true;
-            }  
+        }  
+    };
+    return this;
+
+    this.getFlag = function () {
+        if (this.team === 'runners' && this.isFrozen === false && this.hasFlag === false) {
+            console.log(this.name + ' got the flag!');
+            this.hasFlag = true;
+        }
     };
     return this;
 };
@@ -106,13 +116,14 @@ module.exports = function Team(name) {
                     return false;
                 }
             }
-            
+            console.log('Chasers WIN');
             return true;
         }
 
         if (this.name === 'runners') {
             for (let i = 0; i < this.team.length; i++) {
                 if (this.team[i].hasFlag === true) {
+                    console.log('Runners WIN');
                     return true;
                 }
             }
@@ -122,6 +133,7 @@ module.exports = function Team(name) {
     }
 
     return this;
+    
 
 };
 

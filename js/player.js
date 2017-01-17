@@ -12,7 +12,15 @@ module.exports = function Player(name) {
         if (this.team === 'chasers' && player.team === 'runners') {
             console.log(player.name + ' was frozen by ' + this.name);
             player.isFrozen = true;
-            }  
+        }  
+    };
+    return this;
+
+    this.getFlag = function () {
+        if (this.team === 'runners' && this.isFrozen === false && this.hasFlag === false) {
+            console.log(this.name + ' got the flag!');
+            this.hasFlag = true;
+        }
     };
     return this;
 };

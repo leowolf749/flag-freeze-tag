@@ -64,6 +64,8 @@ window.addEventListener('load', function () {
     r.team[3].tag(r.team[0]);
     c.team[2].tag(r.team[1]);
 
+    r.team[0].getFlag();
+
     c.won(r);
     r.won(c);
 

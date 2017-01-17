@@ -14,13 +14,14 @@ module.exports = function Team(name) {
                     return false;
                 }
             }
-            
+            console.log('Chasers WIN');
             return true;
         }
 
         if (this.name === 'runners') {
             for (let i = 0; i < this.team.length; i++) {
                 if (this.team[i].hasFlag === true) {
+                    console.log('Runners WIN');
                     return true;
                 }
             }
@@ -30,6 +31,7 @@ module.exports = function Team(name) {
     }
 
     return this;
+    
 
 };
 
