@@ -2,23 +2,17 @@ module.exports = function Player(name) {
     this.name = name;
     this.team = null;
     this.isFrozen = false;
+    this.hasFlag = false;
 
     this.tag = function (player) {
-        if (this.team === 'Runners' && this.isFrozen === true) {
-            return 'Frozen players cannot unfreeze other players.'
-        }
-        if (this.team === 'Chasers' && player.team === 'Chasers') {
-            return 'Nothing happened.'
-        }
-        if (this.team === 'Runners' && player.isFrozen === true && player.team === 'Runners') {
+        if (this.team === 'runners' && player.isFrozen === true && player.team === 'runners') {
+            console.log(player.name + ' was unfrozen by ' + this.name);
             player.isFrozen = false;
-            return player.name + ' was unfrozen by ' + this.name;
-        } else {
-            if (this.team === 'Chasers' && player.team === 'Runners') {
-                player.isFrozen = true;
-                return player.name + ' was frozen by ' + this.name;
+        };
+        if (this.team === 'chasers' && player.team === 'runners') {
+            console.log(player.name + ' was frozen by ' + this.name);
+            player.isFrozen = true;
             }  
-        }
-    }
-
-}
+    };
+    return this;
+};

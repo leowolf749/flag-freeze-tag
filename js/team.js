@@ -1,29 +1,35 @@
-module.exports = 
-function Team(team) {
-    let runners = [];
-    let chasers = [];
-    let players = {
-        addRunner: function (name) {
-            runners.push(name);
-            return name.team = 'Runners'  
-        },
-        addChaser: function (name) {
-            chasers.push(name);
-            return name.team = 'Chasers'
-        },
-        announce: function () {
-            for (let i = 0; i < runners.length; i++) {
-                console.log(runners[i] + ' is a runner.');
-            }
-            for (let i = 0; i < chasers.length; i++) {
-                console.log(chasers[i] + ' is a chaser.');
-            }
-        }
-        
+module.exports = function Team(name) {
+    this.name = name;
+    this.team = [];
+    
+    this.add = function (player) {
+        this.team.push(player);
+        player.team = this.name;
     };
-    console.log(runners);
-    console.log(chasers);
-    return players;
+
+    this.won = function (opponent) {
+        if (this.name === 'chasers') {
+            for (let i = 0; i < opponent.team.length; i++) {
+                if (opponent.team[i].isFrozen === false) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        if (this.name === 'runners') {
+            for (let i = 0; i < this.team.length; i++) {
+                if (this.team[i].hasFlag === true) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+    }
+
+    return this;
 
 };
 

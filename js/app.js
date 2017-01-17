@@ -33,33 +33,38 @@ let Player = require('./player');
 let Team = require('./team');
 
 window.addEventListener('load', function () {
-    console.log('ready');
+    /* Creating players */
+    let runners = ['Ed', 'Greg', 'Gredge', 'Derg'];
+    let chasers = ['Gred', 'Dreg', 'Gerg', 'Cheff'];
+
+    /* Creating teams */
+    let r = new Team('runners');
+    let c = new Team('chasers');
+
+    /* Adding players to teams */
+    for (let i = 0; i < runners.length; i++) {
+        let next = new Player(runners[i]);
+        r.add(next);
+    }
+
+    for (let i = 0; i < chasers.length; i++) {
+        let next = new Player(chasers[i]);
+        c.add(next);
+    }
+
+    /* Logs the two teams */
+    console.log(r);
+    console.log(c);
+
+    /* Testing gameplay with tag function */
+    c.team[0].tag(r.team[2]);
+    c.team[1].tag(c.team[2]);
+    r.team[0].tag(r.team[2]);
+    c.team[3].tag(r.team[0]);
+    r.team[3].tag(r.team[0]);
+    c.team[2].tag(r.team[1]);
+
+    c.won(r);
+    r.won(c);
+
 });
-
-
-let a = new Player('Ed');
-let b = new Player('Greg');
-let c = new Player('Gred');
-let d = new Player('Dreg');
-let e = new Player('Gerg');
-
-/*  Adding players to the two teams,
-    Runners and Chasers. */
-
-let run = new Team('Runners');
-let chase = new Team('Chasers');
-
-run.addRunner(a);
-run.addRunner(b);
-chase.addChaser(c);
-chase.addChaser(d);
-chase.addChaser(e);
-
-/* Logging gameplay */
-
-console.log(e.tag(a));
-console.log(e.tag(b));
-console.log(a.tag(b));
-
-
-
